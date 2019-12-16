@@ -1,0 +1,32 @@
+* {
+  border: darkblue 0.5px solid;
+}
+
+.title {
+  text-align: center;
+  margin: 1%;
+  padding: 0%;
+  background-color: gray;
+  color: white;
+  text-align: center;
+}
+
+.client {
+  text-align: center;
+  margin: 0%;
+  padding: 0%;
+  background-color: gray;
+  color: white;
+  text-align: center;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: gray;
+  color: white;
+  text-align: center;
+  margin: 0%;
+}
