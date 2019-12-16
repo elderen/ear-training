@@ -1,2 +1,2 @@
 # ear-training
-hearing test for people
+Music Ear Training
