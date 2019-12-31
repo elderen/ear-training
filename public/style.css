@@ -1,12 +1,12 @@
-* {
-  border: darkblue 0.5px solid;
-}
+/* * {
+  border: red 0.5px solid;
+} */
 
 .title {
   text-align: center;
   margin: 1%;
   padding: 0%;
-  background-color: gray;
+  background-color: darkblue;
   color: white;
   text-align: center;
 }
@@ -15,7 +15,7 @@
   text-align: center;
   margin: 0%;
   padding: 0%;
-  background-color: gray;
+  background-color: darkblue;
   color: white;
   text-align: center;
 }
@@ -30,3 +30,7 @@
   text-align: center;
   margin: 0%;
 }
+
+/* #b1 {
+  background-color: red;
+} */

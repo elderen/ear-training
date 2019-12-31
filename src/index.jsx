@@ -17,7 +17,7 @@ class App extends React.Component {
       <>
         <Home />
         <NoteQuiz />
-        <Footer />
+        {/* <Footer /> */}
       </>
     )
   }
