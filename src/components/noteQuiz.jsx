@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
-
+import Modal from "@material-ui/core/Modal";
 import Audio from "./audio.jsx";
 
 class NoteQuiz extends React.Component {
@@ -11,7 +11,8 @@ class NoteQuiz extends React.Component {
       note1: null,
       note2: null,
       correct: 0,
-      total: 0
+      total: 0,
+      showPercentage: false
     };
     this.assignSound = this.assignSound.bind(this);
     this.soundOne = this.soundOne.bind(this);
@@ -23,7 +24,6 @@ class NoteQuiz extends React.Component {
   }
   componentDidMount() {
     console.log("Developed by Elderen Lee");
-    alert('Start')
     this.assignSound();
   }
 
@@ -40,7 +40,7 @@ class NoteQuiz extends React.Component {
         note2: myNote2
       },
       () => {
-        console.log("Assigned sounds => ", this.state.note1, this.state.note2);
+        // console.log("Assigned sounds => ", this.state.note1, this.state.note2);
         this.autoplay();
       }
     );
@@ -51,29 +51,29 @@ class NoteQuiz extends React.Component {
     let audioEl = document.getElementsByClassName(num)[0];
     let num2 = this.state.note2;
     let audioEl2 = document.getElementsByClassName(num2)[0];
-    
+
     // change button colors
-    let b1 = document.getElementById('b1')
-    let b2 = document.getElementById('b2')
-    
+    let b1 = document.getElementById("b1");
+    let b2 = document.getElementById("b2");
+
     // setTimeout(function() {
-      // playing sound 1
-      audioEl.play();
-      b1.style.backgroundColor = 'green';
+    // playing sound 1
+    audioEl.play();
+    b1.style.backgroundColor = "green";
+    setTimeout(function() {
+      b1.style.backgroundColor = "transparent";
+      audioEl.pause();
+      audioEl.currentTime = 0;
+
+      // play sound 2
+      audioEl2.play();
+      b2.style.backgroundColor = "green";
       setTimeout(function() {
-        b1.style.backgroundColor = 'transparent';
-        audioEl.pause();
-        audioEl.currentTime = 0;
-        
-        // play sound 2
-        audioEl2.play();
-        b2.style.backgroundColor = 'green';
-        setTimeout(function() {
-          b2.style.backgroundColor = 'transparent';
-          audioEl2.pause();
-          audioEl2.currentTime = 0;
-        }, 2000);
+        b2.style.backgroundColor = "transparent";
+        audioEl2.pause();
+        audioEl2.currentTime = 0;
       }, 2000);
+    }, 2000);
     // }, 500);
   }
 
@@ -192,7 +192,10 @@ class NoteQuiz extends React.Component {
           </Button>
         </div>
         <p>
-          {this.state.correct} \ {this.state.total}
+          {this.state.correct} out of {this.state.total} correct
+        </p>
+        <p id="percentage">
+          {((this.state.correct / this.state.total) * 100).toFixed(0)}%
         </p>
         {this.state.notes.map(note => {
           return <Audio key={note} note={note} autoplay muted />;
